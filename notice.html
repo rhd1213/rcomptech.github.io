@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>공지사항 · 공고 | R Comp Tech</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="index.html">R Comp Tech</a>
+  </header>
+
+  <main class="container">
+    <h2 class="page-title">공지사항 · 공고</h2>
+
+    <div class="tabs">
+      <button class="tab active" data-filter="all">전체</button>
+      <button class="tab" data-filter="공지">공지</button>
+      <button class="tab" data-filter="공고">공고</button>
+    </div>
+
+    <ul class="notice-list" id="notice-list"></ul>
+  </main>
+
+  <footer class="footer">© <span id="year"></span> R Comp Tech. All rights reserved.</footer>
+
+  <script>
+    // ▼ 공지/공고는 여기만 수정하면 됩니다 (최신 글을 맨 위에)
+    const notices = [
+      {
+        type: "공고",
+        title: "2026년 연구원 채용 공고",
+        date: "2026-11-16",
+        body: "R Comp Tech에서 함께할 연구원을 모집합니다.\n- 모집 분야: 복합재 제조 및 비파괴검사\n- 접수 기간: 2026.11.16 ~ 2026.11.30\n- 문의: 이메일로 연락 바랍니다."
+      },
+      {
+        type: "공지",
+        title: "R Comp Tech 홈페이지를 오픈했습니다",
+        date: "2026-11-16",
+        body: "R Comp Tech 홈페이지가 새롭게 문을 열었습니다. 앞으로 소식과 공고를 이곳에서 안내하겠습니다."
+      }
+    ];
+    // ▲
+
+    const list = document.getElementById('notice-list');
+    function render(filter) {
+      list.innerHTML = '';
+      const items = notices.filter(n => filter === 'all' || n.type === filter);
+      if (!items.length) {
+        list.innerHTML = '<li class="empty">등록된 게시물이 없습니다.</li>';
+        return;
+      }
+      items.forEach(n => {
+        const li = document.createElement('li');
+        li.className = 'notice';
+        li.innerHTML = `
+          <button class="notice-head" aria-expanded="false">
+            <span class="badge ${n.type === '공고' ? 'badge-alt' : ''}">${n.type}</span>
+            <span class="notice-title"></span>
+            <span class="notice-date">${n.date}</span>
+          </button>
+          <div class="notice-body" hidden></div>`;
+        li.querySelector('.notice-title').textContent = n.title;
+        li.querySelector('.notice-body').textContent = n.body;
+        const head = li.querySelector('.notice-head');
+        head.addEventListener('click', () => {
+          const body = li.querySelector('.notice-body');
+          const open = body.hidden;
+          body.hidden = !open;
+          head.setAttribute('aria-expanded', open);
+        });
+        list.appendChild(li);
+      });
+    }
+    document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      render(t.dataset.filter);
+    }));
+    render('all');
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
