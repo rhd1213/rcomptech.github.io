@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>R Comp Tech</title>
+  <meta name="description" content="R Comp Tech 공식 홈페이지">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="home">
+  <main class="hero">
+    <h1 class="brand">R Comp Tech</h1>
+    <p class="tagline">Composites Technology &amp; Research with an aid of R Lab</p>
+
+    <nav class="menu-grid">
+      <a class="menu-card" href="notice.html">
+        <span class="menu-title">공지사항 · 공고</span>
+        <span class="menu-arrow">→</span>
+      </a>
+      <a class="menu-card" href="about.html">
+        <span class="menu-title">회사 소개</span>
+        <span class="menu-arrow">→</span>
+      </a>
+      <a class="menu-card" href="business.html">
+        <span class="menu-title">사업 분야</span>
+        <span class="menu-arrow">→</span>
+      </a>
+      <a class="menu-card" href="board.html">
+        <span class="menu-title">게시판</span>
+        <span class="menu-arrow">→</span>
+      </a>
+    </nav>
+  </main>
+  <footer class="footer">© <span id="year"></span> R Comp Tech. All rights reserved.</footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

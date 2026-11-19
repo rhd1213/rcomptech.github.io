@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사업 분야 | R Comp Tech</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="index.html">R Comp Tech</a>
+    <nav class="topnav">
+      <a href="notice.html">공지·공고</a>
+      <a href="about.html">회사 소개</a>
+      <a href="business.html" class="current">사업 분야</a>
+      <a href="board.html">게시판</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="page-head">
+      <h2 class="page-title">사업 분야</h2>
+      <a class="back-link" href="index.html" onclick="if (history.length > 1 && document.referrer) { history.back(); return false; }">← 뒤로</a>
+    </div>
+    <p class="page-lead">R Comp Tech의 주요 사업 분야입니다. (※ 실제 내용에 맞게 수정해 주세요.)</p>
+
+    <div class="card-grid">
+      <div class="info-card">
+        <h4>복합재 제조 · 접합</h4>
+        <p>섬유강화 복합재와 3D 프린팅 복합재의 제조 및 이종소재 접합 기술</p>
+      </div>
+      <div class="info-card">
+        <h4>구조 건전성 진단 (SHM)</h4>
+        <p>센서 기반 실시간 구조 모니터링과 고장 예지 및 관리(PHM)</p>
+      </div>
+      <div class="info-card">
+        <h4>비파괴검사 (NDE)</h4>
+        <p>초음파 기반 복합재 결함 검사 및 평가</p>
+      </div>
+      <div class="info-card">
+        <h4>전자파 차폐 소재</h4>
+        <p>복합재 기반 전자파 차폐·흡수 소재 설계 및 해석</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">© <span id="year"></span> R Comp Tech. All rights reserved.</footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

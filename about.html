@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회사 소개 | R Comp Tech</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="index.html">R Comp Tech</a>
+    <nav class="topnav">
+      <a href="notice.html">공지·공고</a>
+      <a href="about.html" class="current">회사 소개</a>
+      <a href="business.html">사업 분야</a>
+      <a href="board.html">게시판</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="page-head">
+      <h2 class="page-title">회사 소개</h2>
+      <a class="back-link" href="index.html" onclick="if (history.length > 1 && document.referrer) { history.back(); return false; }">← 뒤로</a>
+    </div>
+    <p class="page-lead">
+      R Comp Tech는 탄소섬유 복합재를 중심으로 소재 제조부터 구조 진단까지 아우르는 복합재 기술 기업입니다.
+      (※ 실제 회사 소개 문구로 바꿔 주세요.)
+    </p>
+
+    <section class="section">
+      <h3>비전</h3>
+      <p>스마트 복합재 기술로 더 가볍고 안전한 구조물을 만듭니다.</p>
+    </section>
+
+    <section class="section">
+      <h3>회사 정보</h3>
+      <table class="info-table">
+        <tr><th>회사명</th><td>R Comp Tech</td></tr>
+        <tr><th>대표</th><td>(입력)</td></tr>
+        <tr><th>설립</th><td>(입력)</td></tr>
+        <tr><th>주소</th><td>(입력)</td></tr>
+        <tr><th>문의</th><td>(이메일 입력)</td></tr>
+      </table>
+    </section>
+  </main>
+
+  <footer class="footer">© <span id="year"></span> R Comp Tech. All rights reserved.</footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>게시판 | R Comp Tech</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="index.html">R Comp Tech</a>
+    <nav class="topnav">
+      <a href="notice.html">공지·공고</a>
+      <a href="about.html">회사 소개</a>
+      <a href="business.html">사업 분야</a>
+      <a href="board.html" class="current">게시판</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="page-head">
+      <h2 class="page-title">게시판</h2>
+      <a class="back-link" href="index.html" onclick="if (history.length > 1 && document.referrer) { history.back(); return false; }">← 뒤로</a>
+    </div>
+    <p class="page-lead">자유롭게 소식과 자료를 공유하는 게시판입니다.</p>
+
+    <ul class="notice-list" id="board-list"></ul>
+
+  <script>
+    // ▼ 게시글은 여기만 수정하면 됩니다 (최신 글을 맨 위에)
+    const posts = [
+      { title: "게시판을 열었습니다", date: "2026-11-19", body: "R Comp Tech 게시판입니다. 소식과 자료를 이곳에 올립니다." }
+    ];
+    // ▲
+
+    const list = document.getElementById('board-list');
+    if (!posts.length) list.innerHTML = '<li class="empty">등록된 게시물이 없습니다.</li>';
+    posts.forEach(p => {
+      const li = document.createElement('li');
+      li.className = 'notice';
+      li.innerHTML = `
+        <button class="notice-head" aria-expanded="false">
+          <span class="notice-title"></span>
+          <span class="notice-date"></span>
+        </button>
+        <div class="notice-body" hidden></div>`;
+      li.querySelector('.notice-title').textContent = p.title;
+      li.querySelector('.notice-date').textContent = p.date;
+      li.querySelector('.notice-body').textContent = p.body;
+      const head = li.querySelector('.notice-head');
+      head.addEventListener('click', () => {
+        const body = li.querySelector('.notice-body');
+        body.hidden = !body.hidden;
+        head.setAttribute('aria-expanded', !body.hidden);
+      });
+      list.appendChild(li);
+    });
+  </script>
+  </main>
+
+  <footer class="footer">© <span id="year"></span> R Comp Tech. All rights reserved.</footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

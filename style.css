@@ -42,8 +42,7 @@ a { color: inherit; text-decoration: none; }
   margin-top: 1rem;
   color: var(--muted);
   font-size: clamp(0.95rem, 2vw, 1.15rem);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 .hero-links { margin-top: 3rem; }
@@ -74,7 +73,21 @@ a { color: inherit; text-decoration: none; }
   padding: 3rem 1.5rem;
 }
 
-.page-title { font-size: 2rem; font-weight: 800; margin-bottom: 1.5rem; }
+.page-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.page-title { font-size: 2rem; font-weight: 800; }
+.back-link {
+  flex-shrink: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.back-link:hover { color: var(--ink); }
 
 .tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
 .tab {
@@ -139,4 +152,58 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 560px) {
   .notice-head { flex-wrap: wrap; gap: 0.5rem; }
   .notice-date { width: 100%; }
+}
+
+/* ---------- 메인 2×2 메뉴 ---------- */
+.menu-grid {
+  margin-top: 3rem;
+  width: 100%;
+  max-width: 640px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.menu-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 1.6rem 1.5rem;
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  text-align: left;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.menu-card:hover { background: var(--ink); color: #fff; transform: translateY(-3px); }
+
+.menu-title { font-size: 1.25rem; font-weight: 800; }
+.menu-arrow { align-self: flex-end; font-size: 1.2rem; font-weight: 700; }
+
+/* ---------- 하위 페이지 공통 ---------- */
+.page-lead { color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
+.section { margin-bottom: 2.5rem; }
+.section h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 0.8rem; }
+.section p, .section li { line-height: 1.8; color: #333; }
+.section ul { padding-left: 1.2rem; }
+
+.card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.info-card { border: 1px solid var(--line); border-radius: 12px; padding: 1.4rem; }
+.info-card h4 { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.5rem; }
+.info-card p { color: var(--muted); line-height: 1.7; font-size: 0.95rem; }
+
+.info-table { width: 100%; border-collapse: collapse; border-top: 2px solid var(--ink); }
+.info-table th, .info-table td { padding: 0.9rem 0.6rem; border-bottom: 1px solid var(--line); text-align: left; }
+.info-table th { width: 28%; color: var(--muted); font-weight: 600; }
+
+.topbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem; }
+.topnav { display: flex; gap: 1.2rem; font-size: 0.95rem; }
+.topnav a { color: var(--muted); }
+.topnav a:hover, .topnav a.current { color: var(--ink); font-weight: 700; }
+
+@media (max-width: 560px) {
+  .menu-grid { gap: 0.7rem; }
+  .menu-card { padding: 1.2rem 1rem; }
+  .menu-title { font-size: 1.05rem; }
+  .card-grid { grid-template-columns: 1fr; }
 }
